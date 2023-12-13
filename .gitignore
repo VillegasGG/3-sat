@@ -1,0 +1,5 @@
+# Generated images
+*.png
+
+# Pycache
+__pycache__
