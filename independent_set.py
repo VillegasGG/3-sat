@@ -3,6 +3,15 @@ Modulo del algoritmo independent set
 """
 from representacion_grafo import grafica
 
+def independent_set_solver(G):
+    """
+    Algoritmo Greedy: Obtiene el independent set de un grafo
+    """
+    menor = menor_grado(G)
+    print(menor)
+    G = grafo_inducido(G, menor)
+
+
 def menor_grado(G):
     """
     Devuelve el vertice con menor grado de un grafo

@@ -1,5 +1,5 @@
 from verificar import verificar_satisfactibilidad
-from independent_set import *
+from independent_set import independent_set_solver
 
 def sat_solver(G, dicc_nodos, entrada, valores_asignados):
     k = len(entrada)
@@ -8,8 +8,6 @@ def sat_solver(G, dicc_nodos, entrada, valores_asignados):
         return valores_asignados
 
     print("No se satisface ... aún")
-    menor = menor_grado(G)
-    print(menor)
-    G = grafo_inducido(G, menor)
+    independent_set_solver(G)
     
     return("No hay solución")
