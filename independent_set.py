@@ -1,16 +1,25 @@
 """
 Modulo del algoritmo independent set
 """
+import networkx as nx
 from representacion_grafo import grafica
 
 def independent_set_solver(G):
     """
     Algoritmo Greedy: Obtiene el independent set de un grafo
     """
-    menor = menor_grado(G)
-    print(menor)
-    G = grafo_inducido(G, menor)
+    # Crear un grafo vacio que contendra los nodos pertenecientes al independent set
+    S = nx.Graph()
 
+    # Repetir procedimiento hasta que S sea un grafo vacio
+    n = G.number_of_nodes()         # Numero de nodos en el grafo
+    while(n>0):
+        menor = menor_grado(G)
+        S.add_node(menor)
+        G = grafo_inducido(G, menor)
+        n = G.number_of_nodes()
+        
+    return S
 
 def menor_grado(G):
     """
