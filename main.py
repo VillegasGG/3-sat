@@ -11,8 +11,7 @@ def main():
     G, dicc_nodos, lista_entrada = lista_a_grafo(entrada)
 
     # SAT
-    valores_asignados ={}
-    print(sat_solver(G, dicc_nodos, lista_entrada, valores_asignados))
+    sat_solver(G, dicc_nodos, lista_entrada)
 
 if __name__ == "__main__":
     main()
