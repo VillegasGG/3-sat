@@ -1,6 +1,8 @@
 import networkx as nx
+import matplotlib.pyplot as plt
 from verificar import verificar_satisfactibilidad
 from independent_set import independent_set_solver
+from representacion_grafo import graficar_solucion
 
 def sat_solver(G, dicc_nodos, entrada):
     """
@@ -20,6 +22,7 @@ def sat_solver(G, dicc_nodos, entrada):
         print("Valores asignados a las literales: ")
         for key, value in valores_asignados.items():
             print(str(key) + ": " + str(value))
+        graficar_solucion(G, s_graph)
     else:
         print("No se encuentra solución")
     
@@ -40,3 +43,4 @@ def asignar_valores(S, dicc_nodos):
             valores_asignados[literal] = True
 
     return valores_asignados
+

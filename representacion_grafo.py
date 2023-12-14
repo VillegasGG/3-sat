@@ -79,3 +79,15 @@ def grafica(G, nombre):
     nx.draw(G, pos, with_labels = True, node_color = "#F07081", edge_color='#85929E', node_size = 400, font_size=10)
     plt.savefig(nombre, format="PNG")
     plt.close()
+
+
+def graficar_solucion(G, S):
+    pos = nx.circular_layout(G)
+
+    nx.draw_networkx_edges(G, pos, width = 1, alpha = 0.5)
+    nx.draw(G, pos, with_labels = True, node_color = "#F07081", edge_color='#85929E', node_size = 400, font_size=10)
+    
+    options = {"edgecolors": "tab:gray", "node_size": 700, "alpha": 0.9}
+    nx.draw_networkx_nodes(G, pos, nodelist=S.nodes, node_color="#7B68EE", **options)
+    plt.savefig("independent_set.png", format="PNG")
+    plt.close()
