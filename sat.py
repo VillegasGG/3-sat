@@ -1,5 +1,4 @@
 import networkx as nx
-import matplotlib.pyplot as plt
 from verificar import verificar_satisfactibilidad
 from independent_set import independent_set_solver
 from representacion_grafo import graficar_solucion
