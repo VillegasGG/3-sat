@@ -27,19 +27,28 @@ def sat_solver(G, dicc_nodos, entrada):
     
 def asignar_valores(S, dicc_nodos):
     valores_asignados = {}
-    literales = []              # Literales en el independent set
+    literales = []              # Literales de entrada (positivas)
+    literales_true = []           # Literales del independent set
+
+    for key, value in dicc_nodos.items():
+        literal = value.strip()
+        literales.append(literal.strip())
+
+    for literal in literales:
+        valores_asignados[literal] = False
 
     for nodo in S.nodes:
-        literal = dicc_nodos[nodo]
-        literales.append(literal.strip())
-    
-    literales = list(set(literales))
-   
-    for literal in literales:
+        literal_true = dicc_nodos[nodo]
+        literales_true.append(literal_true.strip())
+        print(literal_true)
+
+    for literal in literales_true:
         if(literal[0] == "¬"):
             valores_asignados[literal[1:]] = False
-        else:
-            valores_asignados[literal] = True
+        valores_asignados[literal] = True
 
-    return valores_asignados
+    diccionario_filtrado = {llave: valor for llave, valor in valores_asignados.items() if not llave.startswith('¬')}
+    
+
+    return diccionario_filtrado
 

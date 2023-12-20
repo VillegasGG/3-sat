@@ -18,6 +18,8 @@ def lista_a_grafo(entrada):
     nodo_literal = {}
 
     # Para cada clausula 
+    print(entrada)
+
     for i, clausula in enumerate(entrada):
         nodos = []
         lista_literales = []
@@ -26,7 +28,7 @@ def lista_a_grafo(entrada):
         for j, literal in enumerate(clausula):
             nuevo_nodo = f"v{i+1},{j+1}"     # Se construye el nombre del nodo
             nodos.append(nuevo_nodo)
-            nodo_literal[nuevo_nodo] = literal
+            nodo_literal[nuevo_nodo] = literal.strip()
             lista_literales.append(literal.strip())
         
         # Agregar clausula a lista_clausulas
