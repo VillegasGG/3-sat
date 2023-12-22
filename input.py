@@ -13,7 +13,7 @@ def read_cnf_from_file(filename):
                 clausulas_string = line.strip().split('∧')
 
             for i in clausulas_string:
-                literales = i.replace('(', '').replace(')', '').split(' ∨ ')
+                literales = (i.replace('(', '').replace(')', '').strip()).split(' ')
                 cnf.append(literales)
 
             return cnf

@@ -40,7 +40,6 @@ def asignar_valores(S, dicc_nodos):
     for nodo in S.nodes:
         literal_true = dicc_nodos[nodo]
         literales_true.append(literal_true.strip())
-        print(literal_true)
 
     for literal in literales_true:
         if(literal[0] == "¬"):

@@ -1,5 +1,6 @@
 import networkx as nx
 import matplotlib.pyplot as plt
+import json
 
 def lista_a_grafo(entrada):
     """
@@ -38,14 +39,19 @@ def lista_a_grafo(entrada):
         G.add_nodes_from(nodos)
         
         # Conectar cada nodo de la clausula
-        G.add_edge(nodos[0], nodos[1], length = 5)
-        G.add_edge(nodos[1], nodos[2], length = 5)
-        G.add_edge(nodos[0], nodos[2], length = 5)
+        G.add_edge(nodos[0], nodos[1])
+        G.add_edge(nodos[1], nodos[2])
+        G.add_edge(nodos[0], nodos[2])
     
     # Agregar aristas entre nodos con conflictos
     G = formar_enlaces_conflictos(G, nodo_literal)
 
     grafica(G, "Graph.png")
+
+    # Guardar la salida en un archivo de texto
+    with open("nodos_literales.txt", "w", encoding="utf-8") as doc_output:
+        json.dump(nodo_literal, doc_output, ensure_ascii=False)
+
     return(G, nodo_literal, lista_clausulas)
 
 def formar_enlaces_conflictos(G, literales):
@@ -76,9 +82,8 @@ def grafica(G, nombre):
     Representacion grafica del grafo obtenido
     """
     pos = nx.circular_layout(G)
-    # nx.draw(G, with_labels=True, node_color="pink", font_size=7)
     nx.draw_networkx_edges(G, pos, width = 1, alpha = 0.5)
-    nx.draw(G, pos, with_labels = True, node_color = "#F07081", edge_color='#85929E', node_size = 400, font_size=10)
+    nx.draw(G, pos, with_labels = True, node_color = "#F07081", edge_color='#85929E', node_size = 300, font_size=6)
     plt.savefig(nombre, format="PNG")
     plt.close()
 
@@ -87,9 +92,9 @@ def graficar_solucion(G, S):
     pos = nx.circular_layout(G)
 
     nx.draw_networkx_edges(G, pos, width = 1, alpha = 0.5)
-    nx.draw(G, pos, with_labels = True, node_color = "#F07081", edge_color='#85929E', node_size = 400, font_size=10)
+    nx.draw(G, pos, with_labels = True, node_color = "#F07081", edge_color='#85929E', node_size = 300, font_size=6)
     
-    options = {"edgecolors": "tab:gray", "node_size": 700, "alpha": 0.9}
+    options = {"edgecolors": "tab:gray", "node_size": 500, "alpha": 0.9}
     nx.draw_networkx_nodes(G, pos, nodelist=S.nodes, node_color="#7B68EE", **options)
     plt.savefig("independent_set.png", format="PNG")
     plt.close()
