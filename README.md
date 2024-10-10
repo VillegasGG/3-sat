@@ -1,16 +1,16 @@
-# 3-SAT Solver utilizando Independent Set 🧠
+# 3-SAT Solver using Independent Set 🧠
 
-## Descripción
-Implementación de un algoritmo para resolver instancias del problema **3-SAT** mediante su conversión a un grafo para tratarlo como un problema **independent set**, el cual se resulenve con un enfoque **greedy**.
+## Description
+Implementation of an algorithm to solve instances of the **3-SAT** problem by converting it to a graph to treat it as an **independent set** problem, which is solved with a **greedy** approach.
 
-El problema **3-SAT** es una variante del problema de satisfacibilidad booleana (SAT), donde cada cláusula contiene exactamente tres literales.**.
+The **3-SAT** problem is a variant of the Boolean Satisfiability Problem (SAT), where each clause contains exactly three literals.**
 
-## Algoritmo
-### Paso 1: Conversión a grafo
-- Se crea un **grafo** donde cada nodo representa una **literal** de la entrada.
-- Al ser entradas del tipo 3-SAT cada cláusula forma un **triángulo**.
-- Los triángulos de las cláusulas se conectan entre sí mediante las literales compartidas, formando una estructura compleja de restricciones.
+## Algorithm
+### Step 1: Conversion to graph
+- A **graph** is created where each node represents a **variable**.
+- As they are 3-SAT inputs, each clause forms a **triangle**.
+- The triangles of the clauses are connected to each other by shared literals, forming a complex structure of restrictions.
 
-### Paso 2: Algoritmo Greedy para Independent Set
-- Se utiliza un enfoque **greedy** para seleccionar nodos. 
-- El algoritmo selecciona un conjunto de nodos independientes.
+### Step 2: Greedy Algorithm for Independent Set
+- A **greedy** approach is used to select nodes.
+- The algorithm selects a set of independent nodes.
